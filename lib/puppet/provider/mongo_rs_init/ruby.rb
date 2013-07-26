@@ -9,6 +9,9 @@ Puppet::Type.type(:mongo_rs_init).provide(:ruby) do
         command = "echo 'rs.initiate()' | mongo #{resource[:host]} --quiet"
         result = `#{command}`
 
+        info("Sleeping 90 seconds for the replica set to become active")
+        sleep(90)
+
     end
 
     def destroy

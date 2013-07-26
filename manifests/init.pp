@@ -103,6 +103,7 @@ class mongodb (
     name      => $servicename,
     ensure    => running,
     enable    => true,
+    stop      => "mongod --shutdown --config $mongod_conf_file",
     subscribe => File[$mongod_conf_file],
   }
 }

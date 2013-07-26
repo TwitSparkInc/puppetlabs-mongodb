@@ -6,7 +6,7 @@ Puppet::Type.type(:mongo_rs_add).provide(:ruby) do
 
         info("Adding node %s to replica set of host %s" % [resource[:member], resource[:host]])
 
-        command = "echo 'rs.add(\"#{resource[:member]}\", {arbiterOnly: #{resource[:arbiteronly]}})' | mongo #{resource[:host]} --quiet"
+        command = "echo 'rs.add(\"#{resource[:member]}\", #{resource[:arbiteronly]})' | mongo #{resource[:host]} --quiet"
         notice('constructing command')
         notice(command)
         replicationStatus = `#{command}`
